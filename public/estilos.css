@@ -1,0 +1,17 @@
+body{
+    background: rgba(209, 248, 248, 0.856);
+}
+
+
+
+.head{
+    background: rgba(0, 195, 255, 0.733);
+}
+
+#email:hover{
+    background: rgb(74, 240, 149);
+}
+
+#password:hover{
+    background: rgb(74, 240, 149);
+}
