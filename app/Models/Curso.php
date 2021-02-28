@@ -13,4 +13,14 @@ class Curso extends Model
         return $this->hasMany(registro::class,'id');
     }
 
+    public function notas(){
+        return $this->hasMany(Notas::class,'id');
+    }
+
+    public function cursosProfesores(){
+        return $this->hasMany(CursoProfesor::class,'id');
+    }
+
+     
+
 }

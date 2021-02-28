@@ -9,9 +9,7 @@ class registro extends Model
 {
     use HasFactory;
 
-public function profesor(){
-    return $this->belongsTo(Profesor::class,'profesor_id');
-}
+
 
 public function alumno(){
     return $this->belongsTo(Alumno::class,'alumno_id');

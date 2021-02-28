@@ -18,6 +18,10 @@ class CreateProfesorsTable extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('especialidad');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('set null');
             $table->timestamps();
         });
     }

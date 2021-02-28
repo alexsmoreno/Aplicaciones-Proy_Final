@@ -12,4 +12,11 @@ class Alumno extends Model
     public function registros(){
         return $this->hasMany(registro::class,'id');
     }
+    
+    public function notas(){
+        return $this->hasMany(Notas::class,'id');
+    }
+  
+    
+
 }
