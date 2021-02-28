@@ -25,7 +25,7 @@ public function notas(){
 public function cursosProfesores(){
     return $this->hasMany(CursoProfesor::class,'id');
 }
-
+ 
 
 
 
