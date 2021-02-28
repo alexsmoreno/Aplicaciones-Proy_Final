@@ -17,9 +17,15 @@ class TestController extends Controller
     public function index()
     {
         $Registro = registro::find(1);
+        $Profesor = $Registro->profesor();
+        echo $Profesor->id;
+
+        /*
+        $Registro = registro::find(1);
         $CursoProfesor = CursoProfesor::where('profesor_id', $Registro->id)->first();
         $Profesor = $CursoProfesor->profesor;
         echo $Profesor->id;
+        */
         //FINAL | NO TOCAR
     }
 

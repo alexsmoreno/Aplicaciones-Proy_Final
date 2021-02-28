@@ -9,10 +9,14 @@ class registro extends Model
 {
     use HasFactory;
 
-    public function alumno(){
+    public function alumno(){ //use : $registro->alumno
         return $this->belongsTo(Alumno::class,'alumno_id');
     }
-    public function curso(){
+    public function curso(){ //use : $registro->curso
         return $this->hasOne(Curso::class, 'id', 'curso_id');
+    }
+    public function profesor(){ //use : $registro->profesor()
+        $CursoProfesor = CursoProfesor::where('profesor_id', $this->id)->first();
+        return $CursoProfesor->profesor;
     }
 }
