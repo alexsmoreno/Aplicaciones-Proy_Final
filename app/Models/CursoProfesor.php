@@ -14,7 +14,7 @@ class CursoProfesor extends Model
     }
 
     public function profesor(){
-        return $this->belongsTo(Profesor::class,'profesor_id');
+        return $this->hasOne(Profesor::class,'id', 'profesor_id');
     }
 
 

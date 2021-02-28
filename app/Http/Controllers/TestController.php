@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curso;
+use App\Models\CursoProfesor;
 use App\Models\registro;
 use Illuminate\Http\Request;
 
@@ -15,13 +16,11 @@ class TestController extends Controller
      */
     public function index()
     {
-        $Registros = registro::get();
-        foreach ($Registros as $item){
-            #$Curso = $item->icurso();
-            echo 'id: '.$item->curso_id;
-            echo var_dump(Curso::find($item->curso_id));
-            #var_dump($Curso);
-        }
+        $Registro = registro::find(1);
+        $CursoProfesor = CursoProfesor::where('profesor_id', $Registro->id)->first();
+        $Profesor = $CursoProfesor->profesor;
+        echo $Profesor->id;
+        //FINAL | NO TOCAR
     }
 
     /**
