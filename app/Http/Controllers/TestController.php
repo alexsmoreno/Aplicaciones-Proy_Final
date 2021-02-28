@@ -17,7 +17,10 @@ class TestController extends Controller
     {
         $Registros = registro::get();
         foreach ($Registros as $item){
-            var_dump($item->icurso());
+            #$Curso = $item->icurso();
+            echo 'id: '.$item->curso_id;
+            echo var_dump(Curso::find($item->curso_id));
+            #var_dump($Curso);
         }
     }
 

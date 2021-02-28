@@ -10,7 +10,7 @@ class registro extends Model
     use HasFactory;
 
     public function icurso(){
-        return $this->hasOne(Curso::class, 'curso_id');
+        return $this->hasOne(Curso::class, 'curso_id', 'id');
     }
 
 
@@ -32,7 +32,7 @@ public function profesor(){
 }
 */
 public function cursoOne(){
-    return $this->hasOne(Curso::class,'curso_id', 'id');
+    return Curso::find($this->id);
 }
 
 
