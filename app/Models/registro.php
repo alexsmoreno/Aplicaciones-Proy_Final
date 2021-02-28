@@ -9,6 +9,10 @@ class registro extends Model
 {
     use HasFactory;
 
+    public function icurso(){
+        return $this->hasOne(Curso::class, 'curso_id');
+    }
+
 
 
 public function alumno(){
@@ -18,7 +22,7 @@ public function alumno(){
 public function curso(){
     return $this->belongsTo(Curso::class,'curso_id');
 }
-
+/*
 public function profesor(){
    //return (($this->curso())->hasOne(CursoProfesor::class,'id','curso_id'))->profesor();
    return $this->curso();
@@ -26,9 +30,9 @@ public function profesor(){
 //$cursoProfesor = CursoProfesor::all()->where('curso_id',$curso->id);
 //return $cursoProfesor->profesor();
 }
-
+*/
 public function cursoOne(){
-    return $this->hasOne(Curso::class,'curso_id');
+    return $this->hasOne(Curso::class,'curso_id', 'id');
 }
 
 
