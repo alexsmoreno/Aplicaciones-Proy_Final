@@ -17,7 +17,7 @@ class CreateRegistrosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('alumno_id')->nullable();
             $table->unsignedBigInteger('curso_id')->nullable();
-            $table->string('grupo');
+            $table->integer('grupo');
             $table->foreign('alumno_id')
                   ->references('id')->on('alumnos')
                   ->onDelete('set null');

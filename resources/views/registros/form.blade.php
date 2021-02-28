@@ -11,35 +11,27 @@
 <h1>{{$modo}} Registro</h1>
 <div class="form-group">
 <label for="nombres">Alumnos:</label>
- <select name="lisAlumnos" id="lisAlumnos" class="form-control">
+ <select name="alumno_id" id="alumno_id" class="form-control">
      @foreach ($arreData  as $data )
-         <option value="{{$data ->alumno->id}}">{{$data ->alumno->NOMBRES." ".$data ->alumno->APELLIDOS}}</option>
+         <option value="{{$data->id}}">{{$data->NOMBRES." ".$data->APELLIDOS}}</option>
      @endforeach
  </select>
 </div>
 <div class="form-group">
     <label for="nombres">Cursos:</label>
-     <select name="lisCursos" id="lisCursos" class="form-control">
-        @foreach ($arreData  as $data )
-        <option value="{{$data->curso->id}}">{{$data ->curso->curso}}</option>
+     <select name="curso_id" id="curso_id" class="form-control">
+        @foreach ($arreDataCursos as $curso )
+        <option value="{{$curso->id}}">{{$curso->curso}}</option>
         @endforeach
      </select>
     </div>
-    <div class="form-group">
-        <label for="nombres">Profesores:</label>
-         <select name="lisProfesores" id="lisProfesores" class="form-control">
-            @foreach ($arreData  as $data)
-         <option value="{{$data->profesor->id}}">{{$data ->profesor->nombres ." ". $data ->profesor->apellidos }}</option>
-            @endforeach
-         </select>
-        </div>
         <div class="form-group">
             <label for="listGrupos">Grupos:</label>
-             <select name="listGrupos" id="listGrupos" class="form-control">
-             <option value="A">A</option>
-             <option value="B">B</option>
-             <option value="C">C</option>
-             <option value="D">D</option>
+             <select name="grupo" id="grupo" class="form-control">
+             <option value="1">A</option>
+             <option value="2">B</option>
+             <option value="3">C</option>
+             <option value="4">D</option>
              </select>
         </div>
 <div class="form-group">

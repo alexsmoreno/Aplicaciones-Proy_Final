@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Alumno;
+use App\Models\Curso;
 use App\Models\registro;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,12 @@ class RegistroController extends Controller
     public function index()
     {
         $registros =registro::get(); 
-       // return response()->json($registros);
-        return view('registros.show',compact('registros'));
+       foreach ($registros as $as) {
+           echo $as->id;
+           echo json_encode($as->cursoOne());
+       }
+       //return response()->json($registros);
+       // return view('registros.show',compact('registros'));
     }
 
     /**
@@ -28,9 +33,10 @@ class RegistroController extends Controller
     public function create()
     {
         
-        $arreData =registro::get();
-        // return response()->json( $dataAlumno);
-        return view('registros.create',compact('arreData'));
+         $arreData =Alumno::get();
+         $arreDataCursos = Curso::get();
+         //return response()->json($arreData);
+          return view('registros.create',compact('arreData','arreDataCursos'));
     }
 
     /**
@@ -41,7 +47,10 @@ class RegistroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosRegistro = request()->except('_token');
+        registro::insert($datosRegistro);
+       // return response()->json($datosRegistro);
+        return redirect('registro')->with('mensaje','Matricula  con Exito');
     }
 
     /**

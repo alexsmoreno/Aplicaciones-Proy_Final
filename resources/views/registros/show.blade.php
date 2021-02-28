@@ -29,7 +29,6 @@
         @foreach ($registros as $registro)
         <tr>
         <td>{{$registro->id}}</td> 
-        <td>{{$registro->profesor->nombres}}</td> 
         <td>{{$registro->profesor->especialidad}}</td>
         <td>{{$registro->alumno->NOMBRES}}</td> 
         <td>{{$registro->alumno->APELLIDOS}}</td> 

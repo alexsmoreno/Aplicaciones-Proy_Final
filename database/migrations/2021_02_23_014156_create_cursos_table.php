@@ -17,7 +17,7 @@ class CreateCursosTable extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('curso');
-            $table->integer('numerosGrupos');
+           
             $table->timestamps();
         });
     }

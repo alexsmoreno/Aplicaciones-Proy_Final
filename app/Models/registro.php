@@ -19,4 +19,18 @@ public function curso(){
     return $this->belongsTo(Curso::class,'curso_id');
 }
 
+public function profesor(){
+   //return (($this->curso())->hasOne(CursoProfesor::class,'id','curso_id'))->profesor();
+   return $this->curso();
+//$curso = $this->curso();
+//$cursoProfesor = CursoProfesor::all()->where('curso_id',$curso->id);
+//return $cursoProfesor->profesor();
+}
+
+public function cursoOne(){
+    return $this->hasOne(Curso::class,'curso_id');
+}
+
+
+
 }
