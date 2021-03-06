@@ -9,15 +9,13 @@
       <span aria-hidden="true">&times;</span>
     </div>
 @endif
-<a href="{{url('/profesor/create')}}" class="btn btn-success">Registrar Profesor</a>
-<br>
 <br>
 <table class="table table-striped">
     <thead>
         <tr>
             <th>ID</th>
-            <th>APELLDIOS</th>
             <th>NOMBRES</th>
+            <th>APELLDIOS</th>
             <th>ESPECIALIDAD</th>
             <th>OPCIONES</th>
         </tr>
@@ -26,8 +24,8 @@
         @foreach ($Profesor as $profe)
         <tr>
         <td>{{$profe->id}}</td> 
-        <td>{{$profe->nombres}}</td> 
-        <td>{{$profe->apellidos}}</td>
+        <td>{{$profe->user->name}}</td> 
+        <td>{{$profe->user->last_name}}</td>
         <td>{{$profe->especialidad}}</td> 
         <td>
             <a href="{{url('/profesor/'.$profe->id.'/edit')}}" class="btn btn-primary">

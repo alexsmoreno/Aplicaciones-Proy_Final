@@ -17,12 +17,9 @@ class RegistroController extends Controller
     public function index()
     {
         $registros =registro::get(); 
-       foreach ($registros as $as) {
-           echo $as->id;
-           echo json_encode($as->cursoOne());
-       }
+
        //return response()->json($registros);
-       // return view('registros.show',compact('registros'));
+        return view('registros.show',compact('registros'));
     }
 
     /**
@@ -35,6 +32,7 @@ class RegistroController extends Controller
         
          $arreData =Alumno::get();
          $arreDataCursos = Curso::get();
+           
          //return response()->json($arreData);
           return view('registros.create',compact('arreData','arreDataCursos'));
     }

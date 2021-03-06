@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Curso;
+use App\Models\CursoProfesor;
 use App\Models\Profesor;
 use Illuminate\Http\Request;
 
@@ -62,12 +64,11 @@ class ProfesorController extends Controller
     public function edit($id)
     {
         $profesor =Profesor::findOrFail($id);
-        return view('profesores.edit',compact('profesor'));
+        $arreDataCursos = Curso::all();
+        return view('profesores.edit',compact('profesor','arreDataCursos'));
     }
     
-    public function getProfesores(){
-        
-    }
+
 
 
 
@@ -80,8 +81,24 @@ class ProfesorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $datosProfesor = request()->except('_token','_method');
-        Profesor::where('id','=',$id)->update($datosProfesor);
+        $profesor =Profesor::all()->where('id',$id)->first();
+        // return response()->json($profesor);
+        $profesor->especialidad =Request('especialidad');
+        $profesor->save();        
+        $profesor->user->name =Request('nombres') ;
+        $profesor->user->last_name= Request('apellidos');
+        $profesor->user->save();  
+       // return response()->json($profesor->cursosProfesores);
+        if($profesor->cursosProfesores){
+            $profesor->cursosProfesores->curso_id = Request('curso_id');
+            $profesor->cursosProfesores->profesor_id = $id;
+            $profesor->cursosProfesores->save();
+        }else{
+            $cursoProfesor = new CursoProfesor();
+            $cursoProfesor->curso_id = Request('curso_id');
+            $cursoProfesor->profesor_id = $id;
+            $cursoProfesor->save();
+        }
          return redirect('profesor')->with('mensaje','Profesor Actualizado');
     }
 

@@ -17,6 +17,5 @@ class Alumno extends Model
         return $this->hasMany(Notas::class,'id');
     }
   
-    
 
 }

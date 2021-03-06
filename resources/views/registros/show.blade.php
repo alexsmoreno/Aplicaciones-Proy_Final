@@ -29,7 +29,8 @@
         @foreach ($registros as $registro)
         <tr>
         <td>{{$registro->id}}</td> 
-        <td>{{$registro->profesor->especialidad}}</td>
+        <td>{{$registro->profesor()->user->name." ".$registro->profesor()->user->last_name}}</td>
+        <td>{{$registro->profesor()->especialidad}}</td>
         <td>{{$registro->alumno->NOMBRES}}</td> 
         <td>{{$registro->alumno->APELLIDOS}}</td> 
         <td>{{$registro->curso->curso}}</td> 

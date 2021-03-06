@@ -28,10 +28,10 @@
         <div class="form-group">
             <label for="listGrupos">Grupos:</label>
              <select name="grupo" id="grupo" class="form-control">
-             <option value="1">A</option>
-             <option value="2">B</option>
-             <option value="3">C</option>
-             <option value="4">D</option>
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
              </select>
         </div>
 <div class="form-group">

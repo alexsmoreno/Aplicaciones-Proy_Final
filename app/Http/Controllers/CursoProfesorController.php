@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\CursoProfesor;
+use App\Models\Profesor;
+use App\Models\registro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CursoProfesorController extends Controller
 {
@@ -14,7 +17,14 @@ class CursoProfesorController extends Controller
      */
     public function index()
     {
-        //
+        //$registros =CursoProfesor::get();
+      
+        $idCurso = Auth::user()->teacher->cursosProfesores->curso->id;
+        $idProfesor = Profesor::where('user_id',Auth::user()->id)->first();
+        $cursoProfesor = CursoProfesor::where('profesor_id',$idProfesor->id)->first();
+        $registros = registro::where('curso_id',$cursoProfesor->curso->id)->get();
+        //return response()->json($registros);
+         return view('cursoProfesor.show',compact('registros'));
     }
 
     /**
@@ -24,7 +34,7 @@ class CursoProfesorController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -46,7 +56,7 @@ class CursoProfesorController extends Controller
      */
     public function show(CursoProfesor $cursoProfesor)
     {
-        //
+    
     }
 
     /**
@@ -57,7 +67,7 @@ class CursoProfesorController extends Controller
      */
     public function edit(CursoProfesor $cursoProfesor)
     {
-        //
+        return view('cursoProfesor.calificar');
     }
 
     /**

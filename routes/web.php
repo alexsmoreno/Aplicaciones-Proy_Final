@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\CursoProfesorController;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\TestController;
@@ -26,6 +27,7 @@ Route::resource('alumno',AlumnoController::class);
 Route::resource('profesor',ProfesorController::class);
 Route::resource('curso',CursoController::class);
 Route::resource('registro',RegistroController::class);
+Route::resource('cursoProfesor',CursoProfesorController::class);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/test', [TestController::class, 'index']);
