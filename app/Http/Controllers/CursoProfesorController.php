@@ -88,19 +88,13 @@ class CursoProfesorController extends Controller
          $estado="";
          foreach ($notas as $c) {
             $grupo = registro::where('alumno_id',$c->alumno_id)->where('curso_id',$c->curso_id)->first();
-            $promedio =($c->nota1+$c->nota2+$c->nota4)/4;
+            $promedio =($c->nota1+$c->nota2+$c->nota3+$c->nota4)/4;
             if($promedio >= 14){
                 $estado="APROBADO";
             }else{
                 $estado="DESAPROBADO";
             }
             $time = strtotime($grupo->created_at);
-           
-
-
-
-
-
             $reportes[]=
         ['id'=>$c->id,
         'año'=>date('Y',$time), 
