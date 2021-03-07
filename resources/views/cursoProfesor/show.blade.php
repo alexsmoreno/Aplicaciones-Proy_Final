@@ -9,6 +9,7 @@
       <span aria-hidden="true">&times;</span>
     </div>
     @endif
+    <a href="{{route('reporteFinal',$idProfesor)}}" class="btn btn-success">Reporte de Notas</a>
 <br>
 <br>
 <table class="table table-striped">
@@ -27,9 +28,12 @@
         <td class="active">{{$registro->alumno->NOMBRES." ".$registro->alumno->APELLIDOS}}</td>
         <td class="active">{{$registro->curso->curso}}</td>
         <td class="active">
-            <a href="{{url('/cursoProfesor/'.$registro->alumno->id.'/edit')}}" class="btn btn-primary">
-                CALIFICAR
-            </a>
+            <form action="{{route('cursoProfesor.editar',$registro->alumno->id)}}" class="d-inline" method="post">
+                @csrf
+                <input type="hidden" name="idCursoprof" value="{{$registro->curso->id}}"  >
+                 <input class="btn btn-danger" type="submit" value="CALIFICAR">
+             </form>
+
          </td> 
         </tr>
         @endforeach

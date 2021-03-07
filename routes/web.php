@@ -28,6 +28,8 @@ Route::resource('profesor',ProfesorController::class);
 Route::resource('curso',CursoController::class);
 Route::resource('registro',RegistroController::class);
 Route::resource('cursoProfesor',CursoProfesorController::class);
+Route::post('/cursoProfesor/{id}/editar',[CursoProfesorController::class,'editar'])->name('cursoProfesor.editar');
+Route::get('reporteFinal/{id}',[CursoProfesorController::class,'reporte'])->name('reporteFinal');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/test', [TestController::class, 'index']);

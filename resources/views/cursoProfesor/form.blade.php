@@ -5,27 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
     <title>Document</title>
 </head>
 <body>
 
-<h1>{{$modo}} Calificar</h1>
+<h1>{{$modo}} a {{$alumno->NOMBRES ." ".$alumno->APELLIDOS }}</h1>
 <div class="form-group">
+<input type="hidden" name="idCursoprof" value="{{$idCurso}}"  >  
+<input type="hidden" name="idAlumno" value="{{$alumno->id}}"  >  
 <label for="nota1">NOTA 1</label>
-<input type="text" name="nota1"  value="" id="nota1">
+<input type="text" name="nota1"  value="{{isset($nota->nota1)?$nota->nota1:''}}" id="nota1">
 </div>
 <div class="form-group">
-    <label for="nota1">NOTA 2</label>
-    <input type="text" name="nota1"  value="" id="nota1">
+    <label for="nota2">NOTA 2</label>
+    <input type="text" name="nota2"  value="{{isset($nota->nota2)?$nota->nota2:''}}" id="nota2">
     </div>
     <div class="form-group">
-        <label for="nota1">NOTA 3</label>
-        <input type="text" name="nota1"  value="" id="nota1">
+        <label for="nota3">NOTA 3</label>
+        <input type="text" name="nota3"  value="{{isset($nota->nota3)?$nota->nota3:''}}" id="nota3">
         </div>
         <div class="form-group">
-            <label for="nota1">NOTA 4</label>
-            <input type="text" name="nota1"  value="" id="nota1">
+            <label for="nota4">NOTA 4</label>
+            <input type="text" name="nota4"  value="{{isset($nota->nota4)?$nota->nota4:''}}" id="nota4">
             </div>
 <div class="form-group">
 <input type="submit" value="{{$modo}} Alumno" class="btn btn-success">

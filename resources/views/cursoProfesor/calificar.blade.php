@@ -2,9 +2,8 @@
 
 @section('content')
 <div class="container">
-<form action="{{url('/cursoProfesor/')}}" method="post">
+<form action="{{route('cursoProfesor.store',$alumno->id)}}" method="post">
     @csrf
-    {{method_field('PATCH')}}
     @include('cursoProfesor.form',['modo'=>'Calificar'])
 </form>
 </div>

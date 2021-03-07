@@ -17,7 +17,7 @@ class RegistroController extends Controller
     public function index()
     {
         $registros =registro::get(); 
-
+       
        //return response()->json($registros);
         return view('registros.show',compact('registros'));
     }

@@ -17,9 +17,7 @@ class Curso extends Model
         return $this->hasMany(Notas::class,'id');
     }
 
-    public function cursosProfesores(){
-        return $this->hasMany(CursoProfesor::class,'id');
-    }
+   
 
      
 
