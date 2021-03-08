@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,7 @@ class AlumnoController extends Controller
         $datos['Alumnos'] = Alumno::paginate(5);
         return view('alumnos.mostrar',$datos);
     }
-    
+
     public function getAlumnos(){
        return  Alumno::get();
     }
@@ -99,7 +103,7 @@ class AlumnoController extends Controller
         return redirect('alumno')->with('mensaje','Alumno eliminado');
     }
 
- 
+
 
 
 }

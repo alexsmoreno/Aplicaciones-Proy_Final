@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -64,7 +68,7 @@ class CursoController extends Controller
         $curso =Curso::findOrFail($id);
         return view('cursos.edit',compact('curso'));
     }
-    
+
     public function getCursos(){
         return Curso::get();
     }

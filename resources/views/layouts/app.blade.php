@@ -15,10 +15,11 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('estilos.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
@@ -47,7 +48,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -76,7 +77,65 @@
                 </div>
             </div>
         </nav>
+        <br>
 
+        @guest
+        @else
+        @if(\Illuminate\Support\Facades\Auth::user()->type == 1)
+
+                <nav class="navbar navbar-expand-sm navbar-light bg-light">
+
+                    <div class="container">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('registro.index')}}">Registro de matricula</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('curso.index')}}">Administrar cursos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('alumno.index')}}">Administrar alumnos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('profesor.index')}}">Administrar profesores</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </nav>
+
+        @elseif(\Illuminate\Support\Facades\Auth::user()->type = 2)
+
+                <nav class="navbar navbar-expand-sm navbar-light bg-light">
+                    <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('cursoProfesor.index')}}">Registrar notas</a>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                </nav>
+
+        @endif
+        @endguest
         <main class="py-4">
             @yield('content')
         </main>

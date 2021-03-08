@@ -28,23 +28,21 @@
     <tbody>
         @foreach ($registros as $registro)
         <tr>
-        <td>{{$registro->id}}</td> 
-        <td>{{$registro->profesor()->user->name." ".$registro->profesor()->user->last_name}}</td>
-        <td>{{$registro->profesor()->especialidad}}</td>
-        <td>{{$registro->alumno->NOMBRES}}</td> 
-        <td>{{$registro->alumno->APELLIDOS}}</td> 
-        <td>{{$registro->curso->curso}}</td> 
-        <td>{{$registro->grupo}}</td> 
+        <td>{{$registro->id}}</td>
+
+            <td>{{$registro->profesorAsignado()}}</td>
+            <td>{{$registro->profesorAsignado_e()}}</td>
+        <td>{{$registro->alumno->NOMBRES}}</td>
+        <td>{{$registro->alumno->APELLIDOS}}</td>
+        <td>{{$registro->curso->curso}}</td>
+        <td>{{$registro->grupo}}</td>
         <td>
-            <a href="{{url('/registro/'.$registro->id.'/edit')}}" class="btn btn-primary">
-                Editar
-            </a>
          <form action="{{url('/registro/'.$registro->id)}}" class="d-inline" method="post">
            @csrf
            {{method_field('DELETE')}}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Borrar">
         </form>
-         </td> 
+         </td>
         </tr>
         @endforeach
     </tbody>

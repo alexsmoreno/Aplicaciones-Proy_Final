@@ -19,4 +19,21 @@ class registro extends Model
         $CursoProfesor = CursoProfesor::where('profesor_id', $this->id)->first();
         return $CursoProfesor->profesor;
     }
+
+    public function profesorAsignado(){
+        $CursoProfesor = CursoProfesor::where('profesor_id', $this->id)->first();
+        if ($CursoProfesor){
+            return $CursoProfesor->profesor->user->name." ".$CursoProfesor->profesor->user->last_name;
+
+        }
+        return "No asignado";
+    }
+    public function profesorAsignado_e(){
+        $CursoProfesor = CursoProfesor::where('profesor_id', $this->id)->first();
+        if ($CursoProfesor){
+            return $CursoProfesor->profesor->especialidad;
+
+        }
+        return "";
+    }
 }

@@ -16,9 +16,9 @@ class TestController extends Controller
      */
     public function index()
     {
-        $Registro = registro::find(1);
-        $Profesor = $Registro->profesor();
-        echo $Profesor->id;
+        #$Registro = registro::find(1);
+        #$Profesor = $Registro->profesor();
+        #echo $Profesor->id;
 
         /*
         $Registro = registro::find(1);

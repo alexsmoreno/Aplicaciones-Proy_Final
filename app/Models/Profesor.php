@@ -9,24 +9,17 @@ class Profesor extends Model
 {
     use HasFactory;
 
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 
 
+    public function notas(){
+        return $this->hasMany(Notas::class,'id');
+    }
 
-
-public function user(){
-    return $this->belongsTo(User::class,'user_id');
-}
-
-
-public function notas(){
-    return $this->hasMany(Notas::class,'id');
-}
-
-public function cursosProfesores(){
-    return $this->hasOne(CursoProfesor::class,'id');
-}
- 
-
-
+    public function cursosProfesores(){
+        return $this->hasOne(CursoProfesor::class,'profesor_id','id');
+    }
 
 }

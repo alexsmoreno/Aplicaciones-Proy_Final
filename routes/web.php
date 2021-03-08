@@ -19,17 +19,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Auth::routes();
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+#administrador
 
 Route::resource('alumno',AlumnoController::class);
 Route::resource('profesor',ProfesorController::class);
 Route::resource('curso',CursoController::class);
 Route::resource('registro',RegistroController::class);
+
+#profesor
 Route::resource('cursoProfesor',CursoProfesorController::class);
 Route::post('/cursoProfesor/{id}/editar',[CursoProfesorController::class,'editar'])->name('cursoProfesor.editar');
+
+#ambos
 Route::get('reporteFinal/{id}',[CursoProfesorController::class,'reporte'])->name('reporteFinal');
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/test', [TestController::class, 'index']);
+
+
+#Route::get('/test', [TestController::class, 'index']);
+#npm run watch
+
+
+
+

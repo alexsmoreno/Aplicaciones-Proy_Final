@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class ProfesorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -67,7 +71,7 @@ class ProfesorController extends Controller
         $arreDataCursos = Curso::all();
         return view('profesores.edit',compact('profesor','arreDataCursos'));
     }
-    
+
 
 
 
@@ -84,10 +88,10 @@ class ProfesorController extends Controller
         $profesor =Profesor::all()->where('id',$id)->first();
         // return response()->json($profesor);
         $profesor->especialidad =Request('especialidad');
-        $profesor->save();        
+        $profesor->save();
         $profesor->user->name =Request('nombres') ;
         $profesor->user->last_name= Request('apellidos');
-        $profesor->user->save();  
+        $profesor->user->save();
        // return response()->json($profesor->cursosProfesores);
         if($profesor->cursosProfesores){
             $profesor->cursosProfesores->curso_id = Request('curso_id');

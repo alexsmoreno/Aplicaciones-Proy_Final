@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Auth;
 
 class CursoProfesorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,24 +25,24 @@ class CursoProfesorController extends Controller
      */
     public function index()
     {
-        //$registros =CursoProfesor::get();
-      
-        $idCurso = Auth::user()->teacher->cursosProfesores->curso->id;
-        $idProfesor = Profesor::where('user_id',Auth::user()->id)->first();
-        $cursoProfesor = CursoProfesor::where('profesor_id',$idProfesor->id)->first();
-        $registros = registro::where('curso_id',$cursoProfesor->curso->id)->get();
-        //return response()->json($registros);
-         return view('cursoProfesor.show',compact('registros','idProfesor'));
-    }
+        #default
+        $idProfesor = 0;
+        $registros = [];
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-       
+        #check user profesor
+        if (!(Auth::user()->teacher->exists())){
+            return redirect(route('home'));
+        }
+
+        $Profesor = Profesor::where('user_id',Auth::user()->id)->first();
+        $idProfesor = $Profesor->id;
+
+        if (!(is_null($Profesor->cursosProfesores) || !($Profesor->cursosProfesores->curso->exists()))){
+            $cursoProfesor = CursoProfesor::where('profesor_id',$Profesor->id)->first();
+            $registros = registro::where('curso_id',$cursoProfesor->curso->id)->get();
+        }
+
+         return view('cursoProfesor.show',compact('registros','idProfesor'));
     }
 
     /**
@@ -72,7 +76,7 @@ class CursoProfesorController extends Controller
            $notas->nota4 = Request('nota4');
            $notas->curso_id = Request('idCursoprof');
            $notas->alumno_id = Request('idAlumno');
-           $nota->profesor_id = $idProfesor;
+           $notas->profesor_id = $idProfesor;
            $notas->save();
        }
        return redirect(route('cursoProfesor.index'));
@@ -80,7 +84,7 @@ class CursoProfesorController extends Controller
 
     public function reporte($id){
         $reportes=[];
-    
+
          $notas = Notas::where('profesor_id',$id)->get();
          //return response()->json($c->alumno->registros->grupo);
          //$grupo = $notas->curso->registros->where('alumno_id',$notas->alumno->id)->first();
@@ -97,7 +101,7 @@ class CursoProfesorController extends Controller
             $time = strtotime($grupo->created_at);
             $reportes[]=
         ['id'=>$c->id,
-        'año'=>date('Y',$time), 
+        'año'=>date('Y',$time),
         'mes'=>date('m',$time),
         'docente'=>$c->profesor->user->name,
         'grupo'=>$grupo->grupo,
@@ -107,17 +111,10 @@ class CursoProfesorController extends Controller
         'nota3'=>$c->nota3,
         'nota4'=>$c->nota4,
         'promedio'=>$promedio,
-        'estado'=>$estado];             
+        'estado'=>$estado];
          }
         return view('cursoProfesor.reporte',compact('reportes'));
     }
-
-
-
-
-
-
-
 
 
     /**
@@ -128,7 +125,7 @@ class CursoProfesorController extends Controller
      */
     public function show(CursoProfesor $cursoProfesor)
     {
-    
+
     }
 
     /**
@@ -153,28 +150,5 @@ class CursoProfesorController extends Controller
         $alumno =Alumno::findOrFail($id);
         //return response()->json($nota);
         return view('cursoProfesor.calificar',compact('alumno','idCurso','nota'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CursoProfesor  $cursoProfesor
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, CursoProfesor $cursoProfesor)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\CursoProfesor  $cursoProfesor
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(CursoProfesor $cursoProfesor)
-    {
-        //
     }
 }

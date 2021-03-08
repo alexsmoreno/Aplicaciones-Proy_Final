@@ -24,7 +24,7 @@
     <tbody>
         @foreach ($registros as $registro)
         <tr>
-        <td class="active">{{$registro->id}}</td> 
+        <td class="active">{{$registro->id}}</td>
         <td class="active">{{$registro->alumno->NOMBRES." ".$registro->alumno->APELLIDOS}}</td>
         <td class="active">{{$registro->curso->curso}}</td>
         <td class="active">
@@ -34,7 +34,7 @@
                  <input class="btn btn-danger" type="submit" value="CALIFICAR">
              </form>
 
-         </td> 
+         </td>
         </tr>
         @endforeach
     </tbody>
