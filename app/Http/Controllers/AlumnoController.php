@@ -85,6 +85,13 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        \request()->validate([
+            'dni' => ['required'],
+            'apellidos' => ['required'],
+            'nombres' => ['required']
+        ]);
+
         $datosAlumno = request()->except('_token','Enviar','_method');
         Alumno::where('id','=',$id)->update($datosAlumno);
        // return redirect('alumno');
