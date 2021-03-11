@@ -53,17 +53,6 @@ class AlumnoController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Alumno  $alumno
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Alumno $alumno)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Alumno  $alumno

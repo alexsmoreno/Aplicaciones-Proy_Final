@@ -37,7 +37,6 @@ Route::post('/cursoProfesor/{id}/editar',[CursoProfesorController::class,'editar
 Route::get('reporteFinal/{id}',[CursoProfesorController::class,'reporte'])->name('reporteFinal');
 
 
-#Route::get('/test', [TestController::class, 'index']);
 #npm run watch
 
 

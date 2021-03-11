@@ -46,16 +46,6 @@ class CursoController extends Controller
         //return response()->json($datosCurso);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Curso  $curso
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Curso $curso)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
