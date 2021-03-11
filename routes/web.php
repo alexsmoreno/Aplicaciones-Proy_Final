@@ -5,7 +5,7 @@ use App\Http\Controllers\CursoController;
 use App\Http\Controllers\CursoProfesorController;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\RegistroController;
-use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
