@@ -37,6 +37,9 @@
         <td>{{$registro->curso->curso}}</td>
         <td>{{$registro->grupo}}</td>
         <td>
+            <a href="{{url('/registro/'.$registro->id.'/edit')}}" class="btn btn-primary">
+                Editar
+            </a>
          <form action="{{url('/registro/'.$registro->id)}}" class="d-inline" method="post">
            @csrf
            {{method_field('DELETE')}}

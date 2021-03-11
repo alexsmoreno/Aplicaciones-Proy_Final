@@ -9,6 +9,8 @@
       <span aria-hidden="true">&times;</span>
     </div>
 @endif
+<a href="{{url('/profesor/create')}}" class="btn btn-success">Registrar Profesor</a>
+<br>
 <br>
 <table class="table table-striped">
     <thead>

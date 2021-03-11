@@ -6,6 +6,8 @@ use App\Models\Curso;
 use App\Models\CursoProfesor;
 use App\Models\Profesor;
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class ProfesorController extends Controller
 {
@@ -31,7 +33,8 @@ class ProfesorController extends Controller
      */
     public function create()
     {
-        return view('profesores.create');
+        $arreDataCursos = Curso::all();
+        return view('profesores.create',compact('arreDataCursos'));
     }
 
     /**
@@ -42,10 +45,20 @@ class ProfesorController extends Controller
      */
     public function store(Request $request)
     {
-        $datosProfesor = request()->except('_token');
-        Profesor::insert($datosProfesor);
+      // return response()->json($request);
+       $user = new User();
+       $user->name = Request('nombres');
+       $user->last_name= Request('apellidos');
+       $user->email = Request('email');
+       $user->password =hash("SHA256",Request('password'));
+       $user->type = 2;
+       $user->save();
+       $profe = new Profesor();
+       $profe->user_id = $user->id;
+       $profe->especialidad = "";
+       $profe->save();
         return redirect('profesor')->with('mensaje','Profesor Agregado con Exito');
-       // return response()->json($datosProfesor);
+       // 
     }
 
     /**
