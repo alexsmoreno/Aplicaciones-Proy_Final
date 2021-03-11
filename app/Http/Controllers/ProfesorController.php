@@ -23,7 +23,7 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        $datos['Profesor'] = Profesor::paginate(5);
+        $datos['Profesor'] = Profesor::paginate(20);
         return view('profesores.show',$datos);
     }
 
