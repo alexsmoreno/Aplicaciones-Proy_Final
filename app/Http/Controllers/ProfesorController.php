@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Curso;
 use App\Models\CursoProfesor;
 use App\Models\Profesor;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -50,7 +51,7 @@ class ProfesorController extends Controller
        $user->name = Request('nombres');
        $user->last_name= Request('apellidos');
        $user->email = Request('email');
-       $user->password =hash("SHA256",Request('password'));
+       $user->password = Hash::make(Request('password'));
        $user->type = 2;
        $user->save();
        $profe = new Profesor();
