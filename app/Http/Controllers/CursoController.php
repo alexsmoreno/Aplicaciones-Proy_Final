@@ -83,6 +83,12 @@ class CursoController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        \request()->validate([
+            'codigo' => ['required'],
+            'curso' => ['required']
+        ]);
+
         $datosCurso = request()->except('_token','_method');
         Curso::where('id','=',$id)->update($datosCurso);
         return redirect('curso')->with('mensaje','Curso Actualizado');

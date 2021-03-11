@@ -98,6 +98,14 @@ class ProfesorController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        \request()->validate([
+            'nombres' => ['required'],
+            'apellidos' => ['required'],
+            'especialidad' => ['required'],
+            'curso_id' => ['required']
+        ]);
+
         $profesor =Profesor::all()->where('id',$id)->first();
         // return response()->json($profesor);
         $profesor->especialidad =Request('especialidad');
