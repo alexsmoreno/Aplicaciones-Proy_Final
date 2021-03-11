@@ -84,7 +84,6 @@ class CursoProfesorController extends Controller
 
     public function reporte($id){
         $reportes=[];
-
          $notas = Notas::where('profesor_id',$id)->get();
          //return response()->json($c->alumno->registros->grupo);
          //$grupo = $notas->curso->registros->where('alumno_id',$notas->alumno->id)->first();
