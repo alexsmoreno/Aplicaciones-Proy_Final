@@ -101,7 +101,7 @@ class CursoProfesorController extends Controller
             $time = strtotime($grupo->created_at);
             $reportes[]=
         ['id'=>$c->id,
-        'año'=>date('Y',$time),
+        'año'=>date('Y',$time)." ".$grupo->created_at,
         'mes'=>date('m',$time),
         'docente'=>$c->profesor->user->name,
         'grupo'=>$grupo->grupo,
