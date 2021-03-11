@@ -98,11 +98,11 @@ class CursoProfesorController extends Controller
             }else{
                 $estado="DESAPROBADO";
             }
-           // $time = strtotime($grupo->created_at);
+           $time = strtotime($grupo->created_at);
             $reportes[]=
         ['id'=>$c->id,
-        'año'=> $grupo->created_at,
-        'mes'=> "marzo",
+        'año'=> date('Y',$time),
+        'mes'=>date('m',$time),
         'docente'=>$c->profesor->user->name,
         'grupo'=>$grupo->grupo,
         'estudiante'=>$c->alumno->NOMBRES." ".$c->alumno->APELLIDOS,
