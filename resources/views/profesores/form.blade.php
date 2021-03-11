@@ -15,11 +15,11 @@
         <input type="text" id="nombres" name="nombres" class="form-control" value="{{old('nombres',isset($profesor->user->name)?$profesor->user->name:'')}}" id="nombres" required>
     </div>
     <div class="form-group">
-        <label for="nombres">Nombres:</label>
+        <label for="nombres">Apellidos:</label>
         <input type="text" name="apellidos" class="form-control" value="{{old('apellidos',isset($profesor->user->last_name)?$profesor->user->last_name:'')}}"id="apellidos" required>
     </div>
     <div class="form-group">
-        <label for="nombres">Nombres:</label>
+        <label for="nombres">Especialidad:</label>
         <input type="text" name="especialidad" class="form-control" value="{{old('especialidad',isset($profesor->especialidad)?$profesor->especialidad:'')}}"id="especialidad" required>
     </div>
     <div class="form-group">
