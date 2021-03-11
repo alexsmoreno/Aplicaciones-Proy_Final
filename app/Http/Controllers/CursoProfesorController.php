@@ -117,17 +117,6 @@ class CursoProfesorController extends Controller
 
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\CursoProfesor  $cursoProfesor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CursoProfesor $cursoProfesor)
-    {
-
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\CursoProfesor  $cursoProfesor

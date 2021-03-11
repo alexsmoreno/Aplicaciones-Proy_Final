@@ -59,19 +59,9 @@ class ProfesorController extends Controller
        $profe->especialidad = "";
        $profe->save();
         return redirect('profesor')->with('mensaje','Profesor Agregado con Exito');
-       // 
+       //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Profesor  $profesor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Profesor $profesor)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -85,9 +75,6 @@ class ProfesorController extends Controller
         $arreDataCursos = Curso::all();
         return view('profesores.edit',compact('profesor','arreDataCursos'));
     }
-
-
-
 
 
     /**
