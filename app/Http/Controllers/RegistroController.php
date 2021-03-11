@@ -101,6 +101,7 @@ class RegistroController extends Controller
      */
     public function destroy(registro $registro)
     {
-        //
+        $registro->delete();
+        return back();
     }
 }
