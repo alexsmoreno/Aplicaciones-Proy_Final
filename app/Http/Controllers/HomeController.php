@@ -25,4 +25,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function sub(){
+        return redirect(route('home'));
+    }
 }
